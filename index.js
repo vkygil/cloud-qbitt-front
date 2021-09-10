@@ -5,12 +5,12 @@ const app = express();
 let leIP = "http://dunt.me:3003"
 // leIP = "http://192.168.1.201:3003"
 app.use(express.json()); 
-
+app.use(express.static('public'))
 var FormData = require('form-data');
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
+//app.get('/', function (req, res) {
+//    res.sendFile(__dirname + '/index.html');
+//});
 
 app.post('/add', (req, res) => {
 	

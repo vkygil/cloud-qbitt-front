@@ -12,7 +12,7 @@
   "dependencies": { 
     "axios": "*",
     "express": "^4.17.1",
-    "http-proxy": "^1.18.1",
+    "form-data": "*",
     "trumpet": "^1.7.2",
     "zlib": "^1.0.5"
   }

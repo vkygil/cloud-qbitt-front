@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+    
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": { 
+    "axious": "*",
+    "express": "^4.17.1",
+    "http-proxy": "^1.18.1",
+    "trumpet": "^1.7.2",
+    "zlib": "^1.0.5"
+  }
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://1337x.unblockninja.com/css/jquery-ui.css?V=0.4"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- <link rel="stylesheet" href="https://1337x.unblockninja.com/css/style10.2021-09-03-03.css?V=0.4"> -->
+    <style>
+        * {
+            color: white !important;
+        }
+
+        input {
+            color: rgb(0, 0, 0) !important;
+        }
+
+        .table-list td.seeds,
+        .table-list .seeds {
+            color: #4eb41c;
+        }
+
+        .table-list td.leeches {
+            color: #d63600;
+        }
+
+        .table-list td a {
+            color: rgb(255, 255, 255);
+        }
+
+        .table-list td.size .seeds {
+            display: none;
+        }
+
+        body {
+            background-color: #262626;
+            ;
+        }
+
+        .list-group-item {
+            background-color: #52515166;
+        }
+
+        .whiteRow {
+            background-color: #ffebc4 !important;
+        }
+
+        .modal-dialog {
+            max-width: 100%;
+        }
+
+        .nav-link.active {
+            background-color: #80a147 !important;
+        }
+
+        .modal-content {
+            background-color: #262020 !important;
+        }
+
+        .descrimg {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .colSize {
+            min-width: 92px;
+        }
+
+        .modal-body {
+            padding: 0;
+        }
+
+        button {
+            padding: 30px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <form class="container-fluid justify-content-start">
+            <a class="btn  btn-outline-success nav-link  " aria-current="page" href="/">Home</a>
+        </form>
+    </nav>
+
+    <div class="container">
+        <ul>
+		<br><br><br>
+            <input class="form-control form-control-lg" type="text" value="" id="myInput" onclick="paste(this)"><br>
+
+            <!-- The button used to copy the text -->
+            <button class="btn btn-primary form-control form-control-lg" onclick="send(this)"> Done it! </button><br>
+            <button class="btn btn-primary form-control form-control-lg" onclick="toggleModal()"> Show Torr list
+            </button><br>
+            <button class="btn btn-primary form-control form-control-lg" onclick="toggleIframe()"> Show WEBui
+            </button><br>
+        </ul>
+        <br>
+    </div>
+
+
+    <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Qbitt</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="iframex" src="" width="100%" height="700px"></iframe>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="tListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Qbitt</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="overflow: scroll;" id="tListModalBody">
+                    <table class="d-none table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">size</th>
+                                <th scope="col">progress</th>
+                                <th scope="col">status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function toggleIframe() { 
+            var myModal = new bootstrap.Modal(document.getElementById('iframeModal'), {
+                keyboard: false
+            })
+            myModal.toggle()
+
+            document.getElementById("iframex").setAttribute("src", "http://192.168.1.201:8085/")
+        }
+        async function toggleModal() { 
+            var myModal = new bootstrap.Modal(document.getElementById('tListModal'), {
+                keyboard: false
+            })
+            myModal.toggle()
+
+            let body = document.getElementById("tListModalBody")
+            let tList = await fetch("/getTorrsList").then(response => {
+                return response.json();
+            }).then(data => {
+                return (data);
+            }).catch(err => {
+                alert(err)
+            });
+            console.log(tList);
+
+            let tableData = `<tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">size</th>
+                                <th scope="col">progress</th>
+                                <th scope="col">status</th>
+                            </tr>`
+            tList.forEach(function (obj) {
+                let td = `
+                <tr>
+                    <th scope="row">${obj.name}</th>
+                    <td>${bytesToSize(obj.size)}</td>
+                    <td>${obj.progress.toFixed(2)}</td>
+                    <td>${obj.state}</td>
+                </tr>`
+                tableData += td
+            })
+
+            let tableTemplate = `
+                <table class="table table-dark table-striped">
+                    <tbody>
+                        ${tableData}
+                    </tbody>
+                </table>`;
+            body.innerHTML = tableTemplate
+
+        }
+        function myFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("myInput");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            navigator.clipboard.writeText(copyText.value);
+
+        }
+        function send(el) {
+	 
+            /* Get the text field */
+            var copyText = document.getElementById("myInput").value
+            let formData = new FormData();
+            formData.append('urls', copyText);
+            formData.append('paused', true);
+ 
+		  fetch('/add', {
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({urls:copyText }),
+		  })
+			.then(function(response){
+			  if(response.ok){
+				console.log('POST success.');
+				return;
+			  }
+			  throw new Error('POST failed.');
+			  alert(JSON.stringify(response))
+			})
+			.catch(function(error){
+			  console.log(error);
+			  document.write(error)
+			});  
+            <!-- fetch("http://192.168.1.201:8085/api/v2/torrents/add", -->
+                <!-- { -->
+                    <!-- body: formData, -->
+                    <!-- method: "post" -->
+                <!-- }) -->
+                <!-- .then(data => { -->
+                    <!-- console.log(el); -->
+                    <!-- el.classList.add("btn-success"); -->
+
+                    <!-- console.log(data) -->
+                    <!-- if (data.status !== 200) { -->
+                        <!-- alert("BAD") -->
+                    <!-- } -->
+                <!-- }).catch(err => { -->
+                    <!-- alert(err) -->
+                <!-- }); -->
+        }
+        function bytesToSize(bytes) {
+            var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            if (bytes == 0) return '0 Byte';
+            var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+            return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+        }
+
+        window.onload = function () {
+            [...document.getElementsByTagName("img")].forEach(function (el) {
+                el.setAttribute("src", el.getAttribute('data-original'))
+            })
+        };
+
+       async function paste(input) {
+  const text = await navigator.clipboard.readText();
+  input.value = text;
+}
+
+    </script>
+	<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+</body>
+
+</html>

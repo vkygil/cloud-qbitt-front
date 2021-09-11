@@ -106,6 +106,17 @@
             </button><br> -->
         </ul>
         <br>
+
+        <p>
+
+            <button class="btn btn-primary form-control form-control-lg" onclick="showNewTorrents()"> Show Torrent list
+            </button>
+        </p>
+        <div class="collapse" id="myCollapsible">
+            <div class="card card-body" id="tListBody">
+
+            </div>
+        </div>
     </div>
 
 
@@ -159,9 +170,11 @@
             var myModal = new bootstrap.Modal(document.getElementById('tListModal'), {
                 keyboard: false
             })
-            myModal.toggle()
+            // myModal.toggle()
 
             let body = document.getElementById("tListModalBody")
+            let tListBody = document.getElementById("tListBody")
+
             let tList = await fetch("/getTorrsList").then(response => {
                 return response.json();
             }).then(data => {
@@ -175,7 +188,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">status</th>
                                 <th scope="col">size</th>
-                                <th scope="col">progress</th>
+                                <th scope="col"><small>progress</small></th>
                             </tr>`
             tList.forEach(function (obj) {
                 let td = `
@@ -195,20 +208,13 @@
                     </tbody>
                 </table>`;
             body.innerHTML = tableTemplate
+            tListBody.innerHTML = tableTemplate
 
         }
-        function myFunction() {
-            /* Get the text field */
-            var copyText = document.getElementById("myInput");
 
-            /* Select the text field */
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-            /* Copy the text inside the text field */
-            navigator.clipboard.writeText(copyText.value);
 
-        }
+
         function send(el) {
 
             /* Get the text field */
@@ -253,6 +259,13 @@
         async function paste(input) {
             const text = await navigator.clipboard.readText();
             input.value = text;
+        }
+
+        function showNewTorrents() {
+            toggleModal()
+            $('#myCollapsible').collapse({
+                toggle: true
+            })
         }
 
     </script>

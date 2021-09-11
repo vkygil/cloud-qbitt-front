@@ -94,7 +94,7 @@
 
     <div class="container">
         <ul>
-		<br><br><br>
+            <br><br><br>
             <input class="form-control form-control-lg" type="text" value="" id="myInput" onclick="paste(this)"><br>
 
             <!-- The button used to copy the text -->
@@ -130,37 +130,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Qbitt</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style=" background-color: white; "></button>
                 </div>
                 <div class="modal-body" style="overflow: scroll;" id="tListModalBody">
                     <table class="d-none table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Name</th>
-                                <th scope="col">size</th>
-                                <th scope="col">progress</th>
-                                <th scope="col">status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
+
                     </table>
                 </div>
                 <div class="modal-footer">
@@ -171,7 +146,7 @@
     </div>
 
     <script>
-        async function toggleIframe() { 
+        async function toggleIframe() {
             var myModal = new bootstrap.Modal(document.getElementById('iframeModal'), {
                 keyboard: false
             })
@@ -179,7 +154,7 @@
 
             document.getElementById("iframex").setAttribute("src", "http://192.168.1.201:8085/")
         }
-        async function toggleModal() { 
+        async function toggleModal() {
             var myModal = new bootstrap.Modal(document.getElementById('tListModal'), {
                 keyboard: false
             })
@@ -234,48 +209,32 @@
 
         }
         function send(el) {
-	 
+
             /* Get the text field */
             var copyText = document.getElementById("myInput").value
             let formData = new FormData();
             formData.append('urls', copyText);
             formData.append('paused', true);
- 
-		  fetch('/add', {
-			method: 'POST',
-			headers: {
-			  'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({urls:copyText }),
-		  })
-			.then(function(response){
-			  if(response.ok){
-				console.log('POST success.');
-				return;
-			  }
-			  throw new Error('POST failed.');
-			  alert(JSON.stringify(response))
-			})
-			.catch(function(error){
-			  console.log(error);
-			  document.write(error)
-			});  
-            <!-- fetch("http://192.168.1.201:8085/api/v2/torrents/add", -->
-                <!-- { -->
-                    <!-- body: formData, -->
-                    <!-- method: "post" -->
-                <!-- }) -->
-                <!-- .then(data => { -->
-                    <!-- console.log(el); -->
-                    <!-- el.classList.add("btn-success"); -->
 
-                    <!-- console.log(data) -->
-                    <!-- if (data.status !== 200) { -->
-                        <!-- alert("BAD") -->
-                    <!-- } -->
-                <!-- }).catch(err => { -->
-                    <!-- alert(err) -->
-                <!-- }); -->
+            fetch('/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ urls: copyText }),
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        console.log('POST success.');
+                        return;
+                    }
+                    throw new Error('POST failed.');
+                    alert(JSON.stringify(response))
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    document.write(error)
+                });
         }
         function bytesToSize(bytes) {
             var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
@@ -290,16 +249,16 @@
             })
         };
 
-       async function paste(input) {
-  const text = await navigator.clipboard.readText();
-  input.value = text;
-}
+        async function paste(input) {
+            const text = await navigator.clipboard.readText();
+            input.value = text;
+        }
 
     </script>
-	<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-</script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+    </script>
 </body>
 
 </html>

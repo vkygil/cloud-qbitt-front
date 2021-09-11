@@ -86,34 +86,28 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <!-- <nav class="navbar navbar-dark bg-dark">
         <form class="container-fluid justify-content-start">
             <a class="btn  btn-outline-success nav-link  " aria-current="page" href="/">Home</a>
         </form>
-    </nav>
+    </nav> -->
 
     <div class="container">
-        <ul>
-            <br><br><br>
-            <input class="form-control form-control-lg" type="text" value="" id="myInput" onclick="paste(this)"><br>
+        <br><br><br>
+        <br><br><br>
+        <input class="form-control form-control-lg" type="text" value="" id="myInput" onclick="paste(this)"><br>
 
-            <!-- The button used to copy the text -->
-            <button class="btn btn-primary form-control form-control-lg" onclick="send(this)"> Add torrent!
-            </button><br>
-            <button class="btn btn-primary form-control form-control-lg" onclick="toggleModal()"> Show Torrent list
-            </button><br>
-            <!-- <button class="btn btn-primary form-control form-control-lg" onclick="toggleIframe()"> Show WEBui
-            </button><br> -->
-        </ul>
+        <button class="btn btn-primary form-control form-control-lg" onclick="send(this)"> Add torrent! </button>
         <br>
+        <!-- <button class="btn btn-primary form-control form-control-lg" onclick="toggleModal()"> Show Torrent list
+        </button><br> -->
+        <!-- <button class="btn btn-primary form-control form-control-lg" onclick="toggleIframe()"> Show WEBui
+            </button><br> -->
+        <button class="btn btn-primary form-control form-control-lg" onclick="showNewTorrents()"> Show Torrent list
+        </button>
 
-        <p>
-
-            <button class="btn btn-primary form-control form-control-lg" onclick="showNewTorrents()"> Show Torrent list
-            </button>
-        </p>
         <div class="collapse" id="myCollapsible">
-            <div class="card card-body" id="tListBody">
+            <div class="card card-body p-0" id="tListBody">
 
             </div>
         </div>
@@ -263,9 +257,11 @@
 
         function showNewTorrents() {
             toggleModal()
-            $('#myCollapsible').collapse({
-                toggle: true
-            })
+            let el = document.getElementById("myCollapsible")
+
+            if (!el.classList.contains("show")) {
+                el.classList.add("show")
+            }
         }
 
     </script>

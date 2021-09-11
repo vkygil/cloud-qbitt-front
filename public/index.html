@@ -173,17 +173,17 @@
 
             let tableData = `<tr>
                                 <th scope="col">Name</th>
+                                <th scope="col">status</th>
                                 <th scope="col">size</th>
                                 <th scope="col">progress</th>
-                                <th scope="col">status</th>
                             </tr>`
             tList.forEach(function (obj) {
                 let td = `
                 <tr>
                     <th scope="row">${obj.name}</th>
-                    <td>${bytesToSize(obj.size)}</td>
-                    <td>${obj.progress.toFixed(2)}</td>
-                    <td>${obj.state}</td>
+                    <td><small>${obj.state}</small></td>
+                    <td><small>${bytesToSize(obj.size)}</small></td>
+                    <td><small>${obj.progress.toFixed(2)}</small></td>
                 </tr>`
                 tableData += td
             })
